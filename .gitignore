@@ -1,0 +1,17 @@
+# Everything from a standard WebOrderMobile workspace
+/AppHTML/
+/AppSrc/config/
+/AppSrc/DataFlexReports/
+/AppSrc/*.wo
+/AppSrc/*.inc
+/AppSrc/WebApp.*
+/Bitmaps/
+/Data/
+/DDSrc/
+/IdeSrc/
+/Programs/
+/Reports/
+*.sws
+
+# Except the added change password view
+!/AppSrc/ChangePassword.wo
