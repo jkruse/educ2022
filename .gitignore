@@ -15,3 +15,6 @@
 
 # Except the added change password view
 !/AppSrc/ChangePassword.wo
+
+# Never commit node_modules
+/node_modules/

@@ -1,0 +1,37 @@
+{
+  "name": "dataflex-custom-component",
+  "version": "0.1.0",
+  "description": "DataFlex Custom Component",
+  "keywords": [
+    "dataflex",
+    "custom component",
+    "template"
+  ],
+  "homepage": "",
+  "license": "MIT",
+  "author": "Jakob Kruse <kruse@kruse-net.dk>",
+  "funding": "https://paypal.me/mrkruse",
+  "repository": "github:jkruse/dataflex-custom-component",
+  "scripts": {
+    "watch": "webpack --watch --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.4",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.12.0",
+    "eslint-webpack-plugin": "^3.1.1",
+    "mini-css-extract-plugin": "^2.6.0",
+    "source-map-loader": "^3.0.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=12.13.0"
+  },
+  "private": true
+}
