@@ -2,6 +2,10 @@
 
 import './index.css';
 import { PasswordStrength, commonPasswords, trigraphs } from 'tai-password-strength';
+import chroma from 'chroma-js';
+
+const strengths = ['VERY_WEAK', 'WEAK', 'REASONABLE', 'STRONG', 'VERY_STRONG'];
+const colors = chroma.scale(['#ff4047', '#00ff6e']).mode('lab').colors(5);
 
 class WebNewPasswordForm extends df.WebForm {
     constructor(sName, oParent) {
@@ -24,9 +28,10 @@ class WebNewPasswordForm extends df.WebForm {
 
         this.OnInput.on(
             () => {
-                const { trigraphEntropyBits } = tester.check(this.get('psValue'));
+                const { trigraphEntropyBits, strengthCode } = tester.check(this.get('psValue'));
+                const strengthIndex = strengths.indexOf(strengthCode);
                 meter.style.width = `${Math.tanh(trigraphEntropyBits / 100) * 100}%`;
-                meter.style.backgroundColor = 'blue';
+                meter.style.backgroundColor = colors[strengthIndex];
             }
         );
     }
