@@ -24,7 +24,9 @@ class WebNewPasswordForm extends df.WebForm {
 
         this.OnInput.on(
             () => {
-                console.log(tester.check(this.get('psValue')));
+                const { trigraphEntropyBits } = tester.check(this.get('psValue'));
+                meter.style.width = `${Math.tanh(trigraphEntropyBits / 100) * 100}%`;
+                meter.style.backgroundColor = 'blue';
             }
         );
     }
