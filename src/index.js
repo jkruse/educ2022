@@ -12,6 +12,7 @@ class WebNewPasswordForm extends df.WebForm {
         super(sName, oParent);
 
         // Define web properties and events here
+        this.event('OnInputStrength');
     }
 
     afterRender() {
@@ -30,6 +31,7 @@ class WebNewPasswordForm extends df.WebForm {
             () => {
                 const { trigraphEntropyBits, strengthCode } = tester.check(this.get('psValue'));
                 const strengthIndex = strengths.indexOf(strengthCode);
+                this.fire('OnInputStrength', [strengthIndex]);
                 meter.style.width = `${Math.tanh(trigraphEntropyBits / 100) * 100}%`;
                 meter.style.backgroundColor = colors[strengthIndex];
             }
