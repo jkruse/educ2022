@@ -12,6 +12,7 @@ class WebNewPasswordForm extends df.WebForm {
 
         // Define web properties and events here
         this.event('OnInputStrength');
+        this.event('OnInputDetails', df.cCallModeDefault, 'OnInputDetailsProxy');
     }
 
     async afterRender() {
@@ -29,10 +30,11 @@ class WebNewPasswordForm extends df.WebForm {
 
         this.OnInput.on(
             () => {
-                const { trigraphEntropyBits, strengthCode } = tester.check(this.get('psValue'));
-                const strengthIndex = strengths.indexOf(strengthCode);
+                const result = tester.check(this.get('psValue'));
+                const strengthIndex = strengths.indexOf(result.strengthCode);
                 this.fire('OnInputStrength', [strengthIndex]);
-                meter.style.width = `${Math.tanh(trigraphEntropyBits / 100) * 100}%`;
+                this.fireEx({ sEvent: 'OnInputDetails', tActionData: result });
+                meter.style.width = `${Math.tanh(result.trigraphEntropyBits / 100) * 100}%`;
                 meter.style.backgroundColor = colors[strengthIndex];
             }
         );
